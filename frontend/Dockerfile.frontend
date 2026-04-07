@@ -1,0 +1,11 @@
+FROM denoland/deno:2-alpine AS builder
+WORKDIR /app
+COPY deno.json ./
+COPY src ./src
+COPY index.html vite.config.ts ./
+RUN deno task build
+
+FROM nginx:1.27-alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80

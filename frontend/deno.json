@@ -1,0 +1,19 @@
+{
+  "nodeModulesDir": "auto",
+  "tasks": {
+    "dev": "deno run -A npm:vite@^6 --host",
+    "build": "deno run -A npm:vite@^6 build",
+    "preview": "deno run -A npm:vite@^6 preview",
+    "lint": "deno lint src/",
+    "fmt": "deno fmt src/"
+  },
+  "imports": {
+    "vue": "npm:vue@^3.4",
+    "vue-router": "npm:vue-router@^4",
+    "pinia": "npm:pinia@^2",
+    "axios": "npm:axios@^1",
+    "element-plus": "npm:element-plus@^2",
+    "@element-plus/icons-vue": "npm:@element-plus/icons-vue@^2",
+    "echarts": "npm:echarts@^5"
+  }
+}
