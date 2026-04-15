@@ -38,6 +38,7 @@ pub type AttachmentId = i64;
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, sqlx::Type)]
 #[sqlx(type_name = "work_item_type", rename_all = "snake_case")]
+#[serde(rename_all = "snake_case")]
 pub enum WorkItemType {
     Requirement,
     Story,
@@ -47,6 +48,7 @@ pub enum WorkItemType {
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, sqlx::Type)]
 #[sqlx(type_name = "status", rename_all = "snake_case")]
+#[serde(rename_all = "snake_case")]
 pub enum Status {
     Pending,
     InProgress,
@@ -60,6 +62,7 @@ pub enum Status {
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, sqlx::Type)]
 #[sqlx(type_name = "priority", rename_all = "snake_case")]
+#[serde(rename_all = "snake_case")]
 pub enum Priority {
     Urgent,
     High,
@@ -69,6 +72,7 @@ pub enum Priority {
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, sqlx::Type)]
 #[sqlx(type_name = "role", rename_all = "snake_case")]
+#[serde(rename_all = "snake_case")]
 pub enum Role {
     Admin,
     Developer,
@@ -78,6 +82,7 @@ pub enum Role {
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, sqlx::Type)]
 #[sqlx(type_name = "project_type", rename_all = "snake_case")]
+#[serde(rename_all = "snake_case")]
 pub enum ProjectType {
     Agile,
     Waterfall,
@@ -85,6 +90,7 @@ pub enum ProjectType {
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, sqlx::Type)]
 #[sqlx(type_name = "severity", rename_all = "snake_case")]
+#[serde(rename_all = "snake_case")]
 pub enum Severity {
     Fatal,
     Critical,
@@ -94,6 +100,7 @@ pub enum Severity {
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, sqlx::Type)]
 #[sqlx(type_name = "iteration_status", rename_all = "snake_case")]
+#[serde(rename_all = "snake_case")]
 pub enum IterationStatus {
     NotStarted,
     InProgress,

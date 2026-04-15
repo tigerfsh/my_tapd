@@ -21,6 +21,12 @@ impl ProjectService {
         }
     }
 
+    // ---- list_projects ----
+
+    pub async fn list_projects(&self, user_id: UserId) -> Result<Vec<Project>, AppError> {
+        self.project_repo.list_by_user(user_id).await
+    }
+
     // ---- Task 7.1: create_project ----
 
     pub async fn create_project(

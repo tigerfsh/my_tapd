@@ -34,6 +34,20 @@ impl ProjectRepo {
         Ok(project)
     }
 
+    /// List all projects the user is a member of (or public projects).
+    pub async fn list_by_user(&self, user_id: UserId) -> Result<Vec<Project>, AppError> {
+        let projects = sqlx::query_as::<_, Project>(
+            "SELECT p.* FROM projects p \
+             JOIN project_members pm ON pm.project_id = p.id \
+             WHERE pm.user_id = $1 AND p.is_archived = false \
+             ORDER BY p.created_at DESC",
+        )
+        .bind(user_id)
+        .fetch_all(&self.pool)
+        .await?;
+        Ok(projects)
+    }
+
     pub async fn find_by_id(&self, id: ProjectId) -> Result<Option<Project>, AppError> {
         let project = sqlx::query_as::<_, Project>("SELECT * FROM projects WHERE id = $1")
             .bind(id)

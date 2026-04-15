@@ -21,6 +21,16 @@ fn make_project_service(state: &AppState) -> ProjectService {
     )
 }
 
+/// GET /projects
+pub async fn list_projects_handler(
+    State(state): State<Arc<AppState>>,
+    auth_user: AuthUser,
+) -> Result<impl IntoResponse, AppError> {
+    let svc = make_project_service(&state);
+    let projects = svc.list_projects(auth_user.user_id).await?;
+    Ok(Json(json!({ "data": projects })))
+}
+
 /// POST /projects
 pub async fn create_project_handler(
     State(state): State<Arc<AppState>>,

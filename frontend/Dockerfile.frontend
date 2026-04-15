@@ -1,4 +1,4 @@
-FROM denoland/deno:2-alpine AS builder
+FROM docker.io/denoland/deno:latest as builder
 WORKDIR /app
 COPY deno.json ./
 COPY src ./src

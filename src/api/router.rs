@@ -38,7 +38,9 @@ pub fn create_router(state: AppState) -> Router {
                 .put(notifications::update_preferences_handler),
         )
         // ---- Projects ----
-        .route("/projects", post(projects::create_project_handler))
+        .route("/projects",
+            get(projects::list_projects_handler).post(projects::create_project_handler),
+        )
         .route("/projects/:id", get(projects::get_project_handler).put(projects::update_project_handler))
         .route("/projects/:id/archive", post(projects::archive_project_handler))
         .route("/projects/:id/members",
